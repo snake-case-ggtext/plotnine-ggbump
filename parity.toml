@@ -6,6 +6,22 @@ python = ".pixi/envs/default/bin/python"
 # requirements = []      # extra packages for the environment the package is tested in
 # known_good = ""        # a version known to match R (enables `validate` checks and `selftest`)
 
-# [splits]               # optional: name groups of cases (globs over folder/id)
-# dev = ["geom_*/*"]
-# holdout = ["markup/*"]
+api = ["geom_bump", "stat_bump", "geom_sigmoid", "stat_sigmoid"]
+
+[splits]
+dev = [
+    "geom_bump/bump_example_continuous",
+    "geom_bump/bump_example_discrete",
+    "geom_bump/bump_test_sweden_smooth10",
+    "geom_bump/bump_test_discrete_points",
+    "geom_bump/bump_readme_simple",
+    "geom_bump/bump_readme_pimped",
+    "geom_bump/bump_direction_y",
+    "geom_sigmoid/sigmoid_example",
+    "geom_sigmoid/sigmoid_direction_y",
+]
+holdout = [
+    "geom_bump/bump_test_sweden",
+    "geom_bump/bump_readme_factor_season",
+    "geom_sigmoid/sigmoid_test_df_sig",
+]

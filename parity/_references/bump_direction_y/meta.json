@@ -1,0 +1,25 @@
+{
+  "case": "bump_direction_y",
+  "input_hash": "a30d2b263d6d65892abbff5c36ecbca6931a7361c5cecd49e524403d9391a9d0",
+  "font_hashes": {
+    "DejaVuSans.ttf": "3fdf69cabf06049e",
+    "DejaVuSans-Bold.ttf": "b184b89e3c1075f2",
+    "DejaVuSans-Oblique.ttf": "ccdf74b350f11fd3",
+    "DejaVuSans-BoldOblique.ttf": "6edf0283160186af"
+  },
+  "r_env": {
+    "r_version": "R version 4.5.3 (2026-03-11)",
+    "platform": "x86_64-conda-linux-gnu",
+    "packages": {
+      "ggplot2": "4.0.4",
+      "ggbump": "0.1.99999",
+      "ragg": "1.5.2",
+      "systemfonts": "1.3.3",
+      "jsonlite": "2.0.0"
+    }
+  },
+  "adapter": [
+    "ggbump",
+    "0.1.0"
+  ]
+}
