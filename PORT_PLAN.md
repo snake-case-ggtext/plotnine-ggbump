@@ -19,29 +19,32 @@ Status: `todo`, `case` (parity case written), `impl` (implemented), `parity` (pa
 
 | R export | Kind | plotnine target | Status | Notes |
 |---|---|---|---|---|
-| `geom_bump()` | layer function (stat `StatBump`, geom `"line"`) | `geom_bump(geom_line)`, default stat `"bump"` | todo | `smooth=8`, `direction="x"` |
-| `StatBump` | Stat | `stat_bump(stat)`, default geom `"line"` | todo | lag per non-position group in `setup_data`, so discrete x works |
-| `geom_sigmoid()` | layer function (stat `StatSigmoid`, geom `"line"`) | `geom_sigmoid(geom_line)`, default stat `"sigmoid"` | todo | |
-| `StatSigmoid` | Stat | `stat_sigmoid(stat)` | todo | R's `setup_data` prints the data; the port doesn't |
-| `sigmoid()` | helper | `ggbump.sigmoid()` → `pd.DataFrame` | todo | defaults `smooth=5, n=100` |
-| `rank_sigmoid()` | helper | `ggbump.rank_sigmoid()` → `pd.DataFrame` | todo | default `smooth=8` |
+| `geom_bump()` | layer function (stat `StatBump`, geom `"line"`) | `geom_bump(geom_line)`, default stat `"bump"` | parity | `smooth=8`, `direction="x"` |
+| `StatBump` | Stat | `stat_bump(stat)`, default geom `"line"` | parity | lag per non-position group in `setup_data`, so discrete x works |
+| `geom_sigmoid()` | layer function (stat `StatSigmoid`, geom `"line"`) | `geom_sigmoid(geom_line)`, default stat `"sigmoid"` | parity | |
+| `StatSigmoid` | Stat | `stat_sigmoid(stat)` | parity | R's `setup_data` prints the data; the port doesn't |
+| `sigmoid()` | helper | `ggbump.sigmoid()` → `pd.DataFrame` | impl | defaults `smooth=5, n=100` |
+| `rank_sigmoid()` | helper | `ggbump.rank_sigmoid()` → `pd.DataFrame` | impl | default `smooth=8` |
 | `%>%` | re-export | — | skip | magrittr pipe; no Python counterpart |
 
 ## R tests and examples
 
 | R source | Becomes | Status |
 |---|---|---|
-| `test-numeric_inputs.R` "Basic usage" (3 builds) | `parity/geom_bump/{example_continuous,test_sweden,test_sweden_smooth10}.md` + `tests/test_numeric_inputs.py` | todo |
-| `test-numeric_inputs.R` "Basic usage" `expect_warning(aes(smooth = 10))` | `tests/test_numeric_inputs.py` | todo |
-| `test-numeric_inputs.R` "Discrete x axis" | `parity/geom_bump/test_discrete_points.md` + pytest | todo |
-| `test-numeric_inputs.R` "geom_sigmoid" | `parity/geom_sigmoid/test_df_sig.md` + pytest | todo |
-| `?geom_bump` examples 1, 2 | `parity/geom_bump/{example_continuous,example_discrete}.md` | todo |
-| `?geom_sigmoid` example | `parity/geom_sigmoid/example.md` | todo |
-| README tutorial (simple, factor seasons) | `parity/geom_bump/{readme_simple,readme_factor_season}.md` (no cowplot/wesanderson) | todo |
-| `?sigmoid`, `?rank_sigmoid` | `tests/test_helpers.py`, values from R | todo |
-| (added) `direction = "y"` | `parity/geom_sigmoid/direction_y.md`, `parity/geom_bump/direction_y.md` | todo |
+| `test-numeric_inputs.R` "Basic usage" (3 builds) | `parity/geom_bump/{example_continuous,test_sweden,test_sweden_smooth10}.md` + `tests/test_numeric_inputs.py` | done |
+| `test-numeric_inputs.R` "Basic usage" `expect_warning(aes(smooth = 10))` | `tests/test_numeric_inputs.py` | done |
+| `test-numeric_inputs.R` "Discrete x axis" | `parity/geom_bump/test_discrete_points.md` + pytest | done |
+| `test-numeric_inputs.R` "geom_sigmoid" | `parity/geom_sigmoid/test_df_sig.md` + pytest | done |
+| `?geom_bump` examples 1, 2 | `parity/geom_bump/{example_continuous,example_discrete}.md` | done |
+| `?geom_sigmoid` example | `parity/geom_sigmoid/example.md` | done |
+| README tutorial (simple, factor seasons) | `parity/geom_bump/{readme_simple,readme_factor_season}.md` (no cowplot/wesanderson) | done |
+| `?sigmoid`, `?rank_sigmoid` | `tests/test_helpers.py`, values from R | done |
+| (added) `direction = "y"` | `parity/geom_sigmoid/direction_y.md`, `parity/geom_bump/direction_y.md` | done |
 
-## Open questions
+## Decisions
 
-- Line widths: R `size`/`linewidth` is mm × `.pt`; plotnine's `geom_line` scales by `SIZE_FACTOR`.
-  Settle this from parity results and record it in `docs/differences.md`.
+- Line widths follow plotnine's `size` convention (about 17% thinner than R); `curve_width` is advisory
+  after review. See `docs/differences.md`.
+- Profile reviewed 2026-11-20: `curve_shape` 5 pt, `curve_color` ΔE 10 / opacity 0.1, `curve_width`
+  advisory, `curve_paint_order` gating.
+- Loop `ggbump-v1`: 12/12 pass. The holdout was seen before the loop started (not blind).
