@@ -1,0 +1,44 @@
+# Each mutation breaks one thing in the known-good port; plotparity selftest checks that the named
+# check fails on every listed case and that the render visibly changes.
+
+[[mutation]]
+id = "smooth_default"
+patch = "smooth_default.patch"
+cases = ["geom_bump/bump_example_continuous", "geom_bump/bump_readme_simple"]
+must_fail = ["curve_shape"]
+
+[[mutation]]
+id = "straight_lines"
+patch = "straight_lines.patch"
+cases = ["geom_bump/bump_example_continuous", "geom_bump/bump_test_sweden"]
+must_fail = ["curve_shape"]
+
+[[mutation]]
+id = "direction_ignored"
+patch = "direction_ignored.patch"
+cases = ["geom_bump/bump_direction_y", "geom_sigmoid/sigmoid_direction_y"]
+must_fail = ["curve_shape", "missing_component", "unexpected_component"]
+
+[[mutation]]
+id = "reversed_paint_order"
+patch = "reversed_paint_order.patch"
+cases = ["geom_bump/bump_example_continuous", "geom_bump/bump_readme_pimped"]
+must_fail = ["curve_paint_order"]
+
+[[mutation]]
+id = "lag_ignores_lines"
+patch = "lag_ignores_lines.patch"
+cases = ["geom_bump/bump_example_discrete", "geom_bump/bump_test_discrete_points"]
+must_fail = ["component_count", "missing_component", "unexpected_component"]
+
+[[mutation]]
+id = "colour_lost"
+patch = "colour_lost.patch"
+cases = ["geom_bump/bump_example_continuous", "geom_sigmoid/sigmoid_example"]
+must_fail = ["curve_color"]
+
+[[mutation]]
+id = "sigmoid_ends_swapped"
+patch = "sigmoid_ends_swapped.patch"
+cases = ["geom_sigmoid/sigmoid_example", "geom_sigmoid/sigmoid_test_df_sig"]
+must_fail = ["missing_component", "unexpected_component", "curve_shape"]

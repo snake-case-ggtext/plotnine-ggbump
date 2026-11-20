@@ -1,0 +1,12 @@
+diff --git a/src/ggbump/geoms.py b/src/ggbump/geoms.py
+index d098698..5944b52 100644
+--- a/src/ggbump/geoms.py
++++ b/src/ggbump/geoms.py
+@@ -43,6 +43,7 @@ class _sigmoid_line(geom_line):
+     @override
+     def setup_data(self, data: pd.DataFrame) -> pd.DataFrame:
+         # R's order() is stable; a stable sort keeps vertical runs (ties in x) in drawing order
++        data = data.assign(group=data["group"].max() + 1 - data["group"])
+         return data.sort_values(["PANEL", "group", "x"], kind="mergesort")
+ 
+ 

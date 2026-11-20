@@ -1,0 +1,14 @@
+diff --git a/src/ggbump/stat_sigmoid.py b/src/ggbump/stat_sigmoid.py
+index fbb5873..0682b79 100644
+--- a/src/ggbump/stat_sigmoid.py
++++ b/src/ggbump/stat_sigmoid.py
+@@ -63,8 +63,8 @@ class stat_sigmoid(stat):
+         return sigmoid(
+             row["x"],
+             row["xend"],
+-            row["y"],
+             row["yend"],
++            row["y"],
+             smooth=smooth,
+             direction=direction,
+         )

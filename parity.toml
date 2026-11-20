@@ -4,7 +4,7 @@ package = "ggbump"
 python = ".pixi/envs/default/bin/python"
 # clean_room = true      # set for MIT/BSD ports of GPL R packages (reminds agents not to read R source)
 # requirements = []      # extra packages for the environment the package is tested in
-# known_good = ""        # a version known to match R (enables `validate` checks and `selftest`)
+known_good = "git+file:///home/cameron/coding/snake_case/ggbump@582cb4771bf994fb0529afd9b5aa5f882b3d2681"
 
 api = ["geom_bump", "stat_bump", "geom_sigmoid", "stat_sigmoid"]
 

@@ -1,0 +1,10 @@
+diff --git a/src/ggbump/stat_bump.py b/src/ggbump/stat_bump.py
+index d791d57..834e5ac 100644
+--- a/src/ggbump/stat_bump.py
++++ b/src/ggbump/stat_bump.py
+@@ -88,4 +88,4 @@ class stat_bump(stat):
+                 smooth=smooth,
+                 direction=direction,
+             )
+-        return rank_sigmoid(data["x"], data["y"], smooth=smooth, direction=direction)
++        return data[["x", "y"]].reset_index(drop=True)

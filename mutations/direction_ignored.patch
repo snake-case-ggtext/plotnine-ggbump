@@ -1,0 +1,13 @@
+diff --git a/src/ggbump/_sigmoid.py b/src/ggbump/_sigmoid.py
+index 8c0a417..cfc2293 100644
+--- a/src/ggbump/_sigmoid.py
++++ b/src/ggbump/_sigmoid.py
+@@ -57,7 +57,7 @@ def sigmoid(
+     t = np.linspace(-smooth, smooth, n)
+     s = np.exp(t) / (np.exp(t) + 1)
+     along = (t + smooth) / (smooth * 2)
+-    if direction == "x":
++    if True:
+         return pd.DataFrame(
+             {"x": along * (x_to - x_from) + x_from, "y": s * (y_to - y_from) + y_from}
+         )
