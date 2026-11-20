@@ -1,23 +1,22 @@
 ---
 id: bump_direction_y
 expect: {components: 4, measurable: true}
-source: 'added: the direction argument of ?geom_bump (time on x; rank on x would join each line in rank order)'
+source: 'added: the direction argument of ?geom_bump (Adapted: two time points per line, because R orders each line by x; see docs/differences.md)'
 data:
-  country: ["India", "India", "India", "Sweden", "Sweden", "Sweden", "Germany", "Germany", "Germany", "Finland", "Finland", "Finland"]
-  year: [2011, 2012, 2013, 2011, 2012, 2013, 2011, 2012, 2013, 2011, 2012, 2013]
-  month: ["January", "July", "November", "January", "July", "November", "January", "July", "November", "January", "July", "November"]
-  rank: [4, 2, 2, 3, 1, 4, 2, 3, 1, 1, 4, 3]
+  country: ["India", "India", "Sweden", "Sweden", "Germany", "Germany", "Finland", "Finland"]
+  year: [2011, 2013, 2011, 2013, 2011, 2013, 2011, 2013]
+  rank: [4, 2, 3, 4, 2, 1, 1, 3]
 ---
 
 # bump_direction_y
 
-direction = "y" with time on x: each step leaves and arrives vertically instead of horizontally.
+A vertical bump chart: time on y, rank on x, direction = "y". Each line has two points because R orders a line by x, which matches time order only when the line moves one way.
 
 ```r
-ggplot(df, aes(year, rank, color = country)) +
+ggplot(df, aes(rank, year, color = country)) +
   geom_bump(size = 2, direction = "y")
 ```
 
 ```python ggbump
-ggplot(df, aes("year", "rank", color="country")) + geom_bump(size=2, direction="y")
+ggplot(df, aes("rank", "year", color="country")) + geom_bump(size=2, direction="y")
 ```
