@@ -1,0 +1,9 @@
+adapter = "ggbump"
+
+[reference]
+packages = ["ggplot2", "ggbump"]   # R packages each case needs
+
+[render]
+width_px = 640
+height_px = 480
+dpi = 72

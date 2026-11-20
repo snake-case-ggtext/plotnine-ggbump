@@ -1,0 +1,11 @@
+# plotparity settings for this directory (all optional; command-line flags override them).
+cases = "parity"
+package = "ggbump"
+python = ".pixi/envs/default/bin/python"
+# clean_room = true      # set for MIT/BSD ports of GPL R packages (reminds agents not to read R source)
+# requirements = []      # extra packages for the environment the package is tested in
+# known_good = ""        # a version known to match R (enables `validate` checks and `selftest`)
+
+# [splits]               # optional: name groups of cases (globs over folder/id)
+# dev = ["geom_*/*"]
+# holdout = ["markup/*"]
