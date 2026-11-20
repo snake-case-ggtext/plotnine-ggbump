@@ -7269,6 +7269,7 @@ packages:
   - numpy>=1.23
   - pandas
   - plotnine>=0.15,<0.16
+  - typing-extensions>=4.4
   requires_python: '>=3.10'
 - pypi: /home/cameron/coding/snake_case/sources/plotparity
   name: plotparity
